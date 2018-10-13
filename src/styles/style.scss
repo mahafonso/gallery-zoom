@@ -1,0 +1,115 @@
+@charset 'UTF-8';
+
+// ===============================================================
+/* @IMPORTS */
+// ===============================================================
+@import 'helpers/fonts';
+@import 'helpers/config';
+@import 'helpers/icons';
+@import 'helpers/mixins';
+@import 'helpers/slick';
+
+// ===============================================================
+/* GERAL */
+// ===============================================================
+main {
+	margin: 0 auto;
+	max-width: 1280px;
+	padding: 20px;
+	text-align: center;
+
+	.title {
+		color: #333;
+		margin: 0;
+		padding: 0;
+	}
+}
+
+.gallery {
+	margin: 20px auto;
+	width: 510px;
+
+	.gallery-main {
+		margin-bottom: 20px;
+		overflow: visible;
+		position: relative;
+
+		.gallery-main-list {
+			.gallery-main-list-item {
+				.image-main {
+					height: 290px;
+					margin: 0 auto;
+
+					&.opacity { opacity: .5; }
+				}
+			}
+		}
+
+		.gallery-zoom {
+			background: #fff;
+			border: 1px solid #e0e0e0;
+			display: none;
+			height: 290px;
+			left: 100%;
+			overflow: hidden;
+			position: absolute;
+			top: 0;
+			width: 510px;
+
+			.image-zoom { transform: scale(2); }
+		}
+	}
+
+	.gallery-thumb {
+		.gallery-thumb-list {
+			.slick-track { margin: 0 auto; }
+
+			.slick-arrow {
+				background: transparent;
+				border: none;
+				color: #333;
+				font-size: 0;
+				left: 0;
+				position: absolute;
+				top: 50%;
+				transform: translateY(-50%);
+
+				&::after {
+					content: '<';
+					cursor: pointer;
+					font-size: 24px;
+					font-weight: bold;
+					left: -15px;
+					position: absolute;
+					top: -10px;
+				}
+
+				&.slick-next {
+					left: initial;
+					right: -15px;
+
+					&::after {
+						content: '>';
+						left: 0;
+					}
+				}
+			}
+
+			.gallery-thumb-list-item {
+				@include singleTransition(300);
+				border: 1px solid #e0e0e0;
+				display: inline-block;
+				height: 50px;
+				margin: 0 5px;
+				width: 50px;
+
+				// &:nth-child(6n+1) { margin-left: 0; }
+
+				// &:nth-child(7n+1) { margin-right: 0; }
+
+				&.active,
+				&:hover { border: 1px solid #333; }
+			}
+		}
+	}
+}
